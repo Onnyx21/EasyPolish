@@ -211,6 +211,30 @@
       }
     }
   </style>
+  <script>
+  // Dictionnaire des fichiers audio
+    const audioFiles = {
+      'cześć': '{{ url_for("static", filename="audio/czesc.mp3") }}',
+      'dzien_dobry': '/audio/dzien_dobry.mp3',
+      'dobry_wieczor': '/audio/dobry_wieczor.mp3',
+      'do_widzenia': '/audio/do_widzenia.mp3',
+      'na_razie': '/audio/na_razie.mp3',
+      'jak_sie_masz': '/audio/jak_sie_masz.mp3',
+      'dziekuje': '/audio/dziekuje.mp3'
+    };
+
+    // Fonction pour jouer l'audio
+    function playAudio(word) {
+      if (audioFiles[word]) {
+        const audio = new Audio(audioFiles[word]);
+        console.log("here")
+        audio.play().catch(e => console.error("Erreur de lecture :", e));
+      }
+    }
+
+    
+
+  </script>
 </head>
 <body>
   <header>
@@ -242,7 +266,7 @@
             <td>Cześć</td>
             <td>Hi / Hello</td>
             <td class="pronunciation">cheshch</td>
-            <td><button class="audio-btn" onclick="playAudio('czesc')">▶</button></td>
+            <td><button class="audio-btn" onclick="playAudio('cześć')">▶</button></td>
           </tr>
           <tr>
             <td>Dzień dobry</td>
@@ -327,12 +351,7 @@
   </footer>
 
   <script>
-    // Audio functionality (placeholder - would need actual audio files)
-    function playAudio(word) {
-      // In a real implementation, this would play the corresponding audio file
-      console.log("Playing audio for:", word);
-      alert("Audio playback would work with real audio files: " + word);
-    }
+    
     
     // Flashcard functionality
     function flipCard(card) {
