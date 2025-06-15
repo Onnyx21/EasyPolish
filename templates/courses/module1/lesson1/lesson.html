@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lesson 1 - Greetings in Polish</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <style>
+    table {
+      width: 80%;
+      margin: 30px auto;
+      border-collapse: collapse;
+      font-size: 1.1em;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: center;
+    }
+    th {
+      background-color: #c62828;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📘 Lesson 1: Greetings and Introductions</h1>
+    <nav>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('courses') }}">Courses</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="cours-list">
+      <h2>🇵🇱 Basic Polish Greetings</h2>
+      <p>Welcome for your first polish course ! To start, here are some basic polish greetings: </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Polish</th>
+            <th>English</th>
+            <th>Pronunciation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cześć</td>
+            <td>Hi / Hello</td>
+            <td>cheshch</td>
+          </tr>
+          <tr>
+            <td>Dzień dobry</td>
+            <td>Good morning / Good afternoon</td>
+            <td>jen DOH-bri</td>
+          </tr>
+          <tr>
+            <td>Dobry wieczór</td>
+            <td>Good evening</td>
+            <td>DOH-bri VYEH-choor</td>
+          </tr>
+          <tr>
+            <td>Do widzenia</td>
+            <td>Goodbye</td>
+            <td>do veed-ZEH-nya</td>
+          </tr>
+          <tr>
+            <td>Na razie</td>
+            <td>See you later</td>
+            <td>na RA-zhe</td>
+          </tr>
+          <tr>
+            <td>Jak się masz?</td>
+            <td>How are you?</td>
+            <td>yak shay mash</td>
+          </tr>
+          <tr>
+            <td>Dziękuję</td>
+            <td>Thank you</td>
+            <td>jen-KOO-ye</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <a href="{{ url_for('exercices1') }}">Ready for a quiz /</a>
+
+  <footer>
+
+    <p>&copy; 2025 Learn Polish</p>
+  </footer>
+</body>
+</html>

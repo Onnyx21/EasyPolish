@@ -75,8 +75,25 @@ def courses():
 
 @app.route('/courses/module1')
 def module1():
-    return render_template('module1.html')
+    return render_template('courses/module1.html')
 
+@app.route('/courses/module1/lesson1')
+def lesson1():
+    return render_template('courses/module1/lesson1/lesson.html')
+
+
+@app.route('/courses/module1/lesson1')
+def exercices1():
+    return render_template('courses/module1/lesson1/exercices.html')
+
+
+@app.route('/courses/module1/lesson2')
+def lesson2():
+    return render_template('courses/module1/lesson2/lesson.html')
+
+@app.route('/courses/module1/lesson3')
+def lesson3():
+    return render_template('courses/module1/lesson3/lesson.html')
 
 
 if __name__ == '__main__':

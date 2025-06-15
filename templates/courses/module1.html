@@ -1,3 +1,4 @@
+<!-- templates/module1.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,18 +12,16 @@
     <nav>
       <a href="{{ url_for('home') }}">Home</a>
       <a href="{{ url_for('courses') }}">Courses</a>
-      <a href="{{ url_for('login') }}">Login</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
     </nav>
   </header>
 
   <main class="cours-list">
-    <h2>Lesson 1: Saying Hello</h2>
-    <p>Learn how to greet people in Polish:</p>
+    <h2>Lessons in this module:</h2>
     <ul>
-      <li>👋 Hello = Cześć</li>
-      <li>🧍 Hi = Hej</li>
-      <li>🌞 Good morning = Dzień dobry</li>
-      <li>🌙 Good evening = Dobry wieczór</li>
+      <li><a href="{{ url_for('lesson1') }}">📖 Lesson 1: Basic Greetings</a></li>
+      <li><a href="{{ url_for('lesson2') }}">🙋‍♀️ Lesson 2: Introducing Yourself</a></li>
+      <li><a href="{{ url_for('lesson3') }}">💬 Lesson 3: Asking 'How are you?'</a></li>
     </ul>
   </main>
 
