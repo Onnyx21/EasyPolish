@@ -1,0 +1,177 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #c62828;
+      color: #fff;
+      padding: 20px;
+    }
+
+    header h1 {
+      text-align: center;
+      font-size: 2.5rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+        background: url('https://images.unsplash.com/photo-1573157268794-d13e94d325e6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cG9sYW5kfGVufDB8fDB8fHww') no-repeat center center/cover;
+        color: #fff;
+        padding: 100px 20px;
+        text-align: center;
+    }
+
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .hero a {
+      background: #ffc107;
+      color: #333;
+      padding: 12px 25px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero a:hover {
+      background: #ffb300;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 50px 20px;
+      background: #fff;
+    }
+
+    .feature {
+      background: #f1f1f1;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .feature h3 {
+      margin-bottom: 15px;
+    }
+
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    footer a {
+      color: #ffc107;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .cours-list {
+    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    }
+
+    .cours-list h2 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    text-align: center;
+    }
+
+    .cours-list ul {
+    list-style: none;
+    padding: 0;
+    }
+
+    .cours-list li {
+    margin: 15px 0;
+    font-size: 1.2em;
+    }
+
+    .cours-list a {
+    text-decoration: none;
+    color: #007BFF;
+    }
+
+    .cours-list a:hover {
+    text-decoration: underline;
+    }
+    .login-form {
+  padding: 30px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.login-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form label {
+  margin: 10px 0 5px;
+}
+
+.login-form input {
+  padding: 8px;
+  font-size: 1em;
+}
+
+.login-form button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: #0056b3;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Module 1 - Greetings</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>📘 Module 1: Greetings and Introductions</h1>
+    <nav>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('courses') }}">Courses</a>
+      <a href="{{ url_for('login') }}">Login</a>
+    </nav>
+  </header>
+
+  <main class="cours-list">
+    <h2>Lesson 1: Saying Hello</h2>
+    <p>Learn how to greet people in Polish:</p>
+    <ul>
+      <li>👋 Hello = Cześć</li>
+      <li>🧍 Hi = Hej</li>
+      <li>🌞 Good morning = Dzień dobry</li>
+      <li>🌙 Good evening = Dobry wieczór</li>
+    </ul>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Learn Polish</p>
+  </footer>
+</body>
+</html>
