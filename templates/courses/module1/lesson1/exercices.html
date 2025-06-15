@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz - Greetings in Polish</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    h1 {
+      color: #c62828;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .quiz-container {
+      background-color: #f8f9fa;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .question {
+      margin-bottom: 25px;
+      padding: 15px;
+      border-radius: 5px;
+      background-color: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .question-text {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    
+    .option {
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .option:hover {
+      background-color: #f0f0f0;
+    }
+    
+    .option.selected {
+      border-color: #c62828;
+      background-color: #ffebee;
+    }
+    
+    .option.correct {
+      border-color: #4caf50;
+      background-color: #e8f5e9;
+    }
+    
+    .option.incorrect {
+      border-color: #f44336;
+      background-color: #ffebee;
+    }
+    
+    .feedback {
+      margin-top: 10px;
+      padding: 8px;
+      border-radius: 4px;
+      display: none;
+    }
+    
+    .feedback.correct {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      display: block;
+    }
+    
+    .feedback.incorrect {
+      background-color: #ffebee;
+      color: #c62828;
+      display: block;
+    }
+    
+    .result {
+      text-align: center;
+      font-size: 1.2em;
+      margin-top: 30px;
+      padding: 15px;
+      border-radius: 4px;
+      background-color: #e3f2fd;
+      display: none;
+    }
+    
+    .progress {
+      text-align: center;
+      margin: 20px 0;
+      font-weight: bold;
+    }
+    
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+    
+    .nav-btn {
+      background-color: #c62828;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .nav-btn:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="{{ url_for('home') }}">Home</a> 
+      <a href="{{ url_for('courses') }}">Courses</a> 
+      <a href="{{ url_for('module1') }}">Back to Lesson</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>📝 Quiz - Greetings in Polish</h1>
+    
+    <div class="progress">
+      Score: <span id="score">0</span>/<span id="total">5</span>
+    </div>
+    
+    <div class="quiz-container">
+      <div class="question" id="q1">
+        <div class="question-text">1. How do you say "Hi" in Polish?</div>
+        <div class="options">
+          <div class="option" data-correct="false">Dzień dobry</div>
+          <div class="option" data-correct="true">Cześć</div>
+          <div class="option" data-correct="false">Do widzenia</div>
+          <div class="option" data-correct="false">Dziękuję</div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+      
+      <div class="question" id="q2">
+        <div class="question-text">2. What does "Dzień dobry" mean in English?</div>
+        <div class="options">
+          <div class="option" data-correct="true">Good morning</div>
+          <div class="option" data-correct="false">Good evening</div>
+          <div class="option" data-correct="false">Good night</div>
+          <div class="option" data-correct="false">Hello</div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+      
+      <div class="question" id="q3">
+        <div class="question-text">3. What is the correct pronunciation for "Dobry wieczór"?</div>
+        <div class="options">
+          <div class="option" data-correct="false">jen DOH-bri</div>
+          <div class="option" data-correct="true">DOH-bri VYEH-choor</div>
+          <div class="option" data-correct="false">do veed-ZEH-nya</div>
+          <div class="option" data-correct="false">yak shay mash</div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+      
+      <div class="question" id="q4">
+        <div class="question-text">4. How do you say "Thank you" in Polish?</div>
+        <div class="options">
+          <div class="option" data-correct="false">Na razie</div>
+          <div class="option" data-correct="false">Cześć</div>
+          <div class="option" data-correct="true">Dziękuję</div>
+          <div class="option" data-correct="false">Jak się masz</div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+      
+      <div class="question" id="q5">
+        <div class="question-text">5. What does "Jak się masz?" mean?</div>
+        <div class="options">
+          <div class="option" data-correct="false">What's your name?</div>
+          <div class="option" data-correct="false">Where are you from?</div>
+          <div class="option" data-correct="true">How are you?</div>
+          <div class="option" data-correct="false">Good afternoon</div>
+        </div>
+        <div class="feedback"></div>
+      </div>
+      
+      <div class="result" id="quizResult"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Learn Polish</p>
+  </footer>
+
+  <script>
+    let currentScore = 0;
+    const totalQuestions = 5;
+    let answeredQuestions = 0;
+    
+    // Update score display
+    document.getElementById('score').textContent = currentScore;
+    document.getElementById('total').textContent = totalQuestions;
+    
+    // Add event listeners to all options
+    document.querySelectorAll('.option').forEach(option => {
+      option.addEventListener('click', function() {
+        // Only allow one selection per question
+        if (this.parentElement.querySelector('.selected')) return;
+        
+        this.classList.add('selected');
+        const isCorrect = this.dataset.correct === "true";
+        const feedback = this.parentElement.nextElementSibling;
+        
+        if (isCorrect) {
+          this.classList.add('correct');
+          currentScore++;
+          document.getElementById('score').textContent = currentScore;
+          feedback.textContent = "✓ Correct! Well done!";
+          feedback.classList.add('correct');
+        } else {
+          this.classList.add('incorrect');
+          // Highlight the correct answer
+          const correctOption = this.parentElement.querySelector('[data-correct="true"]');
+          correctOption.classList.add('correct');
+          feedback.textContent = "✗ Incorrect. The correct answer is highlighted.";
+          feedback.classList.add('incorrect');
+        }
+        
+        answeredQuestions++;
+        
+        // Check if all questions are answered
+        if (answeredQuestions === totalQuestions) {
+          showFinalResult();
+        }
+      });
+    });
+    
+    function showFinalResult() {
+        const resultElement = document.getElementById('quizResult');
+        resultElement.style.display = 'block';
+        resultElement.innerHTML = `
+            <h3>Quiz Completed!</h3>
+            <p>Your final score: <strong>${currentScore}/${totalQuestions}</strong> (${Math.round((currentScore/totalQuestions)*100)}%)</p>
+            <p>${getPerformanceMessage(currentScore, totalQuestions)}</p>
+            <button onclick="location.reload()">Try Again</button>
+        `;
+
+        // Ajoute les confettis si score parfait
+        if (currentScore === totalQuestions) {
+            launchConfetti();
+        }
+        
+        resultElement.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Fonction pour lancer les confettis
+    function launchConfetti() {
+    // Crée 100 confettis
+    for (let i = 0; i < 50; i++) {
+        createConfetti();
+    }
+    }
+
+    function createConfetti() {
+    const confetti = document.createElement('div');
+    confetti.innerHTML = ['🎉', '✨', '🌟', '🎊', '💫'][Math.floor(Math.random() * 5)];
+    confetti.style.position = 'fixed';
+    confetti.style.fontSize = `${Math.random() * 20 + 10}px`;
+    confetti.style.left = `${Math.random() * 100}vw`;
+    confetti.style.top = '-20px';
+    confetti.style.zIndex = '1000';
+    confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+    
+    document.body.appendChild(confetti);
+    
+    // Supprime le confetti après l'animation
+    setTimeout(() => {
+        confetti.remove();
+    }, 5000);
+    }
+
+// Ajoute le style pour l'animation
+const style = document.createElement('style');
+style.innerHTML = `
+  @keyframes fall {
+    to {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(style);
+    
+    function getPerformanceMessage(score, total) {
+      const percentage = (score/total)*100;
+      
+      if (percentage >= 80) {
+        return "Excellent work! You've mastered these greetings!";
+      } else if (percentage >= 50) {
+        return "Good job! Review the lesson and try again to improve!";
+      } else {
+        return "Keep practicing! The more you try, the better you'll get!";
+      }
+    }
+  </script>
+</body>
+</html>

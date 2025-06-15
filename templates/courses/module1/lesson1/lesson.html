@@ -2,96 +2,358 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lesson 1 - Greetings in Polish</title>
   <link rel="stylesheet" href="/static/css/style.css">
   <style>
+    :root {
+      --primary: #c62828;
+      --secondary: #f8f9fa;
+      --accent: #2e7d32;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    
+    header {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+    
+    h1 {
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 2.2em;
+    }
+    
+    h2 {
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 5px;
+      margin-top: 30px;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    nav a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 15px;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    
+    nav a:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .lesson-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
     table {
-      width: 80%;
+      width: 100%;
       margin: 30px auto;
       border-collapse: collapse;
       font-size: 1.1em;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
+    
     th, td {
-      border: 1px solid #ccc;
-      padding: 12px;
+      border: 1px solid #ddd;
+      padding: 15px;
       text-align: center;
     }
+    
     th {
-      background-color: #c62828;
+      background-color: var(--primary);
       color: white;
+      font-weight: bold;
     }
+    
     tr:nth-child(even) {
-      background-color: #f8f9fa;
+      background-color: var(--secondary);
+    }
+    
+    .pronunciation {
+      font-style: italic;
+      color: #666;
+    }
+    
+    .audio-btn {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      margin-left: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+    
+    .audio-btn:hover {
+      transform: scale(1.1);
+    }
+    
+    .interactive-section {
+      background-color: #e8f5e9;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 30px 0;
+    }
+    
+    .flashcard {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin: 20px 0;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .flashcard:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    
+    .flashcard .front {
+      display: block;
+    }
+    
+    .flashcard .back {
+      display: none;
+    }
+    
+    .flashcard.flipped .front {
+      display: none;
+    }
+    
+    .flashcard.flipped .back {
+      display: block;
+    }
+    
+    .flashcard-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .practice-btn {
+      display: block;
+      width: 200px;
+      margin: 30px auto;
+      padding: 12px;
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    
+    .practice-btn:hover {
+      background-color: #b71c1c;
+      transform: translateY(-2px);
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+      color: #666;
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      
+      .lesson-container {
+        padding: 15px;
+      }
+      
+      table {
+        font-size: 0.9em;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <h1>📘 Lesson 1: Greetings and Introductions</h1>
+    <p style="text-align: center;">Master the basic Polish greetings and start your language journey!</p>
     <nav>
       <a href="{{ url_for('home') }}">Home</a>
       <a href="{{ url_for('courses') }}">Courses</a>
-      <a href="{{ url_for('logout') }}">Logout</a>
+      <a href="{{ url_for('exercices1') }}">Practice</a>
     </nav>
   </header>
 
-  <main>
-    <section class="cours-list">
+  <div class="lesson-container">
+    <section>
       <h2>🇵🇱 Basic Polish Greetings</h2>
-      <p>Welcome for your first polish course ! To start, here are some basic polish greetings: </p>
+      <p>Welcome to your first Polish lesson! These essential greetings will help you start conversations in Polish:</p>
+      
       <table>
         <thead>
           <tr>
             <th>Polish</th>
             <th>English</th>
             <th>Pronunciation</th>
+            <th>Audio</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Cześć</td>
             <td>Hi / Hello</td>
-            <td>cheshch</td>
+            <td class="pronunciation">cheshch</td>
+            <td><button class="audio-btn" onclick="playAudio('czesc')">▶</button></td>
           </tr>
           <tr>
             <td>Dzień dobry</td>
             <td>Good morning / Good afternoon</td>
-            <td>jen DOH-bri</td>
+            <td class="pronunciation">jen DOH-bri</td>
+            <td><button class="audio-btn" onclick="playAudio('dzien_dobry')">▶</button></td>
           </tr>
           <tr>
             <td>Dobry wieczór</td>
             <td>Good evening</td>
-            <td>DOH-bri VYEH-choor</td>
+            <td class="pronunciation">DOH-bri VYEH-choor</td>
+            <td><button class="audio-btn" onclick="playAudio('dobry_wieczor')">▶</button></td>
           </tr>
           <tr>
             <td>Do widzenia</td>
             <td>Goodbye</td>
-            <td>do veed-ZEH-nya</td>
+            <td class="pronunciation">do veed-ZEH-nya</td>
+            <td><button class="audio-btn" onclick="playAudio('do_widzenia')">▶</button></td>
           </tr>
           <tr>
             <td>Na razie</td>
             <td>See you later</td>
-            <td>na RA-zhe</td>
+            <td class="pronunciation">na RA-zhe</td>
+            <td><button class="audio-btn" onclick="playAudio('na_razie')">▶</button></td>
           </tr>
           <tr>
             <td>Jak się masz?</td>
             <td>How are you?</td>
-            <td>yak shay mash</td>
+            <td class="pronunciation">yak shay mash</td>
+            <td><button class="audio-btn" onclick="playAudio('jak_sie_masz')">▶</button></td>
           </tr>
           <tr>
             <td>Dziękuję</td>
             <td>Thank you</td>
-            <td>jen-KOO-ye</td>
+            <td class="pronunciation">jen-KOO-ye</td>
+            <td><button class="audio-btn" onclick="playAudio('dziekuje')">▶</button></td>
           </tr>
         </tbody>
       </table>
     </section>
-  </main>
-  <a href="{{ url_for('exercices1') }}">Ready for a quiz /</a>
+
+    <section class="interactive-section">
+      <h2>🎮 Interactive Practice</h2>
+      <p>Flip the cards to test your memory of the Polish greetings:</p>
+      
+      <div class="flashcard" onclick="flipCard(this)">
+        <div class="front">Hello (English)</div>
+        <div class="back">Cześć (Polish)</div>
+      </div>
+      
+      <div class="flashcard" onclick="flipCard(this)">
+        <div class="front">Dzień dobry (Polish)</div>
+        <div class="back">Good morning (English)</div>
+      </div>
+      
+      <div class="flashcard" onclick="flipCard(this)">
+        <div class="front">How do you say "Thank you" in Polish?</div>
+        <div class="back">Dziękuję</div>
+      </div>
+      
+      <div class="flashcard-controls">
+        <button onclick="resetCards()">Reset Cards</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>💡 Cultural Tip</h2>
+      <p>In Poland, it's customary to:</p>
+      <ul>
+        <li>Use <strong>"Dzień dobry"</strong> (Good day) from morning until evening</li>
+        <li>Switch to <strong>"Dobry wieczór"</strong> (Good evening) after dark</li>
+        <li>Make eye contact and shake hands when greeting someone formally</li>
+        <li>Use <strong>"Cześć"</strong> only in informal situations with friends</li>
+      </ul>
+    </section>
+
+    <a href="{{ url_for('exercices1') }}" class="practice-btn">Test Your Knowledge →</a>
+  </div>
 
   <footer>
-
-    <p>&copy; 2025 Learn Polish</p>
+    <p>&copy; 2025 Learn Polish | Lesson 1 of 10</p>
   </footer>
+
+  <script>
+    // Audio functionality (placeholder - would need actual audio files)
+    function playAudio(word) {
+      // In a real implementation, this would play the corresponding audio file
+      console.log("Playing audio for:", word);
+      alert("Audio playback would work with real audio files: " + word);
+    }
+    
+    // Flashcard functionality
+    function flipCard(card) {
+      card.classList.toggle('flipped');
+    }
+    
+    function resetCards() {
+      document.querySelectorAll('.flashcard').forEach(card => {
+        card.classList.remove('flipped');
+      });
+    }
+    
+    // Add hover effect to table rows
+    document.querySelectorAll('tbody tr').forEach(row => {
+      row.addEventListener('mouseenter', () => {
+        row.style.backgroundColor = '#ffebee';
+      });
+      row.addEventListener('mouseleave', () => {
+        row.style.backgroundColor = '';
+      });
+    });
+  </script>
 </body>
 </html>

@@ -3,10 +3,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
 import secrets
 
-
-
-
-
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
 
@@ -73,6 +69,8 @@ def courses():
     return render_template('courses.html')
 
 
+
+# -- Module 1 --
 @app.route('/courses/module1')
 def module1():
     return render_template('courses/module1.html')
@@ -81,11 +79,9 @@ def module1():
 def lesson1():
     return render_template('courses/module1/lesson1/lesson.html')
 
-
-@app.route('/courses/module1/lesson1')
+@app.route('/courses/module1/exercices1')
 def exercices1():
     return render_template('courses/module1/lesson1/exercices.html')
-
 
 @app.route('/courses/module1/lesson2')
 def lesson2():
@@ -94,6 +90,25 @@ def lesson2():
 @app.route('/courses/module1/lesson3')
 def lesson3():
     return render_template('courses/module1/lesson3/lesson.html')
+
+# -- Module 2 --
+@app.route('/courses/module2')
+def module2():
+    return render_template('courses/module2.html')
+
+
+# -- Module 3 --
+@app.route('/courses/module3')
+def module3():
+    return render_template('courses/module3.html')
+
+
+# -- Module 4 --
+@app.route('/courses/module4')
+def module4():
+    return render_template('courses/module4.html')
+
+
 
 
 if __name__ == '__main__':
